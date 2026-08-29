@@ -8,4 +8,4 @@ El programa evaluará la decisión del jugador y mostrará si logró resolver co
 El objetivo del proyecto es crear un programa interactivo que permita poner en práctica conocimientos básicos de Python, como variables, condicionales, ciclos, funciones, listas y entrada de datos, desarrollando al mismo tiempo un juego sencillo y entretenido que utilice la lógica para resolver problemas.
 
 # Algortimo Del Proyecto
-
+<el archivo ya con el algoritmo ya está cargado>
