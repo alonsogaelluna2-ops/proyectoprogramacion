@@ -1,3 +1,22 @@
+#¡AVISO IMPORTANTE PARA QUIEN EJECUTE EL CÓDIGO!:
+#Se recomienda que al ejecutar el código, extienda la terminal ya que si no, no podrá ver completo el juego
+#(descripciones, historia, sospechosos, etc.) y probablemente piense que no se ejecuta de manera correcta
+#¡GRACIAS  Y DISFRUTA DEL JUEGO!
+
+sospechosos_casos = [
+    ["1. Carlos, el vendedor", "2. Laura, la gerente", "3. Miguel, el guardia"],
+    ["1. Diego, el compañero de cuarto", "2. Elena, la profesora", "3. Raúl, el mejor amigo"],
+    ["1. Dra. Ramírez, la investigadora", "2. Julián, el técnico", "3. Sofía, la becaria"]
+]
+
+pistas_casos = [
+    ["- Las huellas de la vitrina son de alguien con llaves de la tienda", "- La cámara de seguridad se apagó 10 minutos", "- Laura tenía las llaves de la caja fuerte"],
+    ["- La mochila del estudiante sigue en su cuarto", "- Su celular tiene un mensaje sin enviar para Raúl", "- Raúl dijo que no lo veía desde hace una semana, pero lo vieron juntos ayer"],
+    ["- Los químicos usados solo están en el almacén de la Dra. Ramírez", "- La puerta no fue forzada", "- Alguien usó una tarjeta de acceso a las 3 a.m."]
+]
+
+culpables = [2, 3, 1]
+
 def mostrar_caso(titulo, descripcion):
     print(titulo)
     print(descripcion)
@@ -11,42 +30,16 @@ def mostrar_acciones():
 
 def mostrar_sospechosos(caso):
     print("Sospechosos:")
-    if caso == 1:
-        print("1. Carlos, el vendedor")
-        print("2. Laura, la gerente")
-        print("3. Miguel, el guardia")
-    elif caso == 2:
-        print("1. Diego, el compañero de cuarto")
-        print("2. Elena, la profesora")
-        print("3. Raúl, el mejor amigo")
-    elif caso == 3:
-        print("1. Dra. Ramírez, la investigadora")
-        print("2. Julián, el técnico")
-        print("3. Sofía, la becaria")
+    for sospechoso in sospechosos_casos[caso - 1]:
+        print(sospechoso)
 
 def mostrar_pistas(caso):
     print("Pistas disponibles:")
-    if caso == 1:
-        print("- Las huellas de la vitrina son de alguien con llaves de la tienda")
-        print("- La cámara de seguridad se apagó 10 minutos")
-        print("- Laura tenía las llaves de la caja fuerte")
-    elif caso == 2:
-        print("- La mochila del estudiante sigue en su cuarto")
-        print("- Su celular tiene un mensaje sin enviar para Raúl")
-        print("- Raúl dijo que no lo veía desde hace una semana, pero lo vieron juntos ayer")
-    elif caso == 3:
-        print("- Los químicos usados solo están en el almacén de la Dra. Ramírez")
-        print("- La puerta no fue forzada")
-        print("- Alguien usó una tarjeta de acceso a las 3 a.m.")
+    for pista in pistas_casos[caso - 1]:
+        print(pista)
 
 def numero_culpable(caso):
-    # Regresa el número del sospechoso que es el culpable de cada caso
-    if caso == 1:
-        return 2
-    elif caso == 2:
-        return 3
-    else:
-        return 1
+    return culpables[caso - 1]
 
 def investigar(caso):
     pistas_vistas = 0
@@ -62,7 +55,6 @@ def investigar(caso):
             mostrar_sospechosos(caso)
             acusado = int(input("¿A quién acusas? (número): "))
             if acusado == numero_culpable(caso):
-                # Cada vez que viste las pistas se restan 10 puntos
                 puntos = 100 - (pistas_vistas * 10)
                 if puntos < 0:
                     puntos = 0
